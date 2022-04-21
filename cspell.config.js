@@ -17,6 +17,8 @@ module.exports = {
     'sokol',
     // projects
     'emretepedev',
+    'yusufferdogan',
+    'IERC20',
   ],
 
   ignoreWords: [],
