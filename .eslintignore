@@ -1,0 +1,9 @@
+node_modules
+artifacts
+cache
+coverage
+soldata
+.husky
+typechain
+typechain-types
+docs
