@@ -28,8 +28,8 @@ contract SalaryManager {
     function pay(address[] calldata payees, uint256[] calldata amounts) external {
         require(payees.length == amounts.length, "SalaryManager::pay: INVALID_INPUT_LENGTH");
         for (uint256 i; i < payees.length; i++) {
-            emit PaymentERC20(payees[i], amounts[i]);
             erc20.safeTransferFrom(msg.sender, payees[i], amounts[i]);
+            emit PaymentERC20(payees[i], amounts[i]);
         }
     }
 }
