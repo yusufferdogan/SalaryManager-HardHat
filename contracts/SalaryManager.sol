@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.7;
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /**
     @author yusufferdogan
     @title Send your ERC20 assets to multiple addresses  
 */
 contract SalaryManager {
-    using SafeMath for uint256;
     using SafeERC20 for IERC20;
     event PaymentERC20(address to, uint256 amount);
 
