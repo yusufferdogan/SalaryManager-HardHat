@@ -10,6 +10,7 @@ contract SalaryManager {
     using SafeERC20 for IERC20;
     event PaymentERC20(address to, uint256 amount);
 
+    /* solhint-disable-next-line state-visibility */
     IERC20 immutable erc20;
 
     constructor(address tokenAddress) {
@@ -24,6 +25,7 @@ contract SalaryManager {
         length of @param payees and @param amounts must be same 
     */
     function pay(address[] calldata payees, uint256[] calldata amounts) external {
+        /* solhint-disable-next-line reason-string */
         require(payees.length == amounts.length, "SalaryManager::pay: INVALID_INPUT_LENGTH");
         for (uint256 i; i < payees.length; i++) {
             erc20.safeTransferFrom(msg.sender, payees[i], amounts[i]);
