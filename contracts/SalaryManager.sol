@@ -10,7 +10,7 @@ contract SalaryManager {
     using SafeERC20 for IERC20;
     event PaymentERC20(address to, uint256 amount);
 
-    IERC20 public erc20;
+    IERC20 immutable erc20;
 
     constructor(address tokenAddress) {
         erc20 = IERC20(tokenAddress);
