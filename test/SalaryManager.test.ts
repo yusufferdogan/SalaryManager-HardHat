@@ -95,4 +95,33 @@ describe(contractName, () => {
       .to.emit(contract, 'PaymentERC20')
       .withArgs(address2, toWei(200));
   });
+
+  it('Check sender balance decreased', async () => {
+    const beforeBalance = await erc20Contract.balanceOf(address);
+    const totalAmount = toWei(300);
+    await erc20Contract.approve(contract.address, totalAmount);
+    await contract.pay([address1, address2], [toWei(100), toWei(200)], {
+      from: address,
+    });
+    const afterBalance = await erc20Contract.balanceOf(address);
+    assert.equal(
+      beforeBalance - totalAmount,
+      afterBalance,
+      'Sender balance must be decreased'
+    );
+  });
+
+  it('Check receiver balance increased', async () => {
+    const beforeBalance = await erc20Contract.balanceOf(address1);
+    await erc20Contract.approve(contract.address, toWei(300));
+    await contract.pay([address1, address2], [toWei(100), toWei(200)], {
+      from: address,
+    });
+    const afterBalance = await erc20Contract.balanceOf(address1);
+    assert.equal(
+      beforeBalance.toNumber() + ethers.BigNumber.from(toWei(100)),
+      afterBalance.toNumber(),
+      'Receiver balance must be increased'
+    );
+  });
 });
