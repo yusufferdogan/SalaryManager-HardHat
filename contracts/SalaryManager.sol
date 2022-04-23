@@ -32,11 +32,4 @@ contract SalaryManager {
             emit PaymentERC20(payees[i], amounts[i]);
         }
     }
-
-    /** 
-        @notice uncomment this function to run tests
-    */
-    function getErc20() public view returns (IERC20) {
-        return erc20;
-    }
 }

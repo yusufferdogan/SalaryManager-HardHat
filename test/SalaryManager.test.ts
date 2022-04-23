@@ -39,16 +39,6 @@ describe(contractName, () => {
     await contract.deployed();
   });
 
-  it('the ERC20 address should be correct', async () => {
-    const tokenAddress: string = await contract.getErc20();
-
-    assert.equal(
-      tokenAddress,
-      erc20Contract.address,
-      'The token address must be valid.'
-    );
-  });
-
   it('reverts on different lengths of payees and amounts', async () => {
     await expect(
       contract.pay([address1], [1000000, 1000000], {
