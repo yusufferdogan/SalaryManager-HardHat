@@ -40,7 +40,7 @@ describe(contractName, () => {
   });
 
   it('the ERC20 address should be correct', async () => {
-    const tokenAddress: string = await contract.erc20();
+    const tokenAddress: string = await contract.getErc20();
 
     assert.equal(
       tokenAddress,

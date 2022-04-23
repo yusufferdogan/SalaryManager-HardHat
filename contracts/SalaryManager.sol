@@ -10,9 +10,6 @@ contract SalaryManager {
     using SafeERC20 for IERC20;
     event PaymentERC20(address to, uint256 amount);
 
-    /** 
-        @notice make it public to be able to run tests
-    */
     /* solhint-disable-next-line state-visibility */
     IERC20 immutable erc20;
 
@@ -34,5 +31,12 @@ contract SalaryManager {
             erc20.safeTransferFrom(msg.sender, payees[i], amounts[i]);
             emit PaymentERC20(payees[i], amounts[i]);
         }
+    }
+
+    /** 
+        @notice uncomment this function to run tests
+    */
+    function getErc20() public view returns (IERC20) {
+        return erc20;
     }
 }
